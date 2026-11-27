@@ -42,7 +42,7 @@ const LINKS: {
   {
     title: "Join AI Workshop",
     description: "Hands-on, live, and interactive",
-    href: "#", // TODO: destination to be provided
+    href: "https://ritasofio.vercel.app/workshop",
     Icon: Sparkles,
     featured: true,
     size: "featured",
