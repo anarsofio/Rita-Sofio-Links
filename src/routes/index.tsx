@@ -46,9 +46,9 @@ const LINKS: {
   opensContactDrawer?: boolean;
 }[] = [
   {
-    title: "Join AI Workshop",
+    title: "Workshops & Classes",
     description: "Hands-on, live, and interactive",
-    href: "https://ritasofio.vercel.app/workshop",
+    href: "https://ritasofio.vercel.app/workshops-2",
     Icon: Sparkles,
     featured: true,
     size: "featured",
