@@ -57,7 +57,7 @@ const LINKS: {
   {
     title: "Partnerships & Talks",
     description: "Work with me",
-    href: "#", // TODO: destination to be provided
+    href: "https://ritasofio.vercel.app/partnerships-and-talks",
     Icon: Handshake,
     size: "wide",
   },
