@@ -38,6 +38,8 @@ const LINKS: {
   Icon: typeof Sparkles;
   featured?: boolean;
   size: LinkObjectSize;
+  /** Set to true to hide a card without deleting it. */
+  hidden?: boolean;
 }[] = [
   {
     title: "Join AI Workshop",
@@ -67,6 +69,7 @@ const LINKS: {
     href: "#", // TODO: destination to be provided
     Icon: Heart,
     size: "square",
+    hidden: true,
   },
   {
     title: "Contact Me",
@@ -98,7 +101,7 @@ function LinkInBio() {
 
         <nav aria-label="Main links" className="mt-10">
           <div className="grid grid-cols-2 gap-4 [grid-auto-flow:dense] md:grid-cols-4 md:gap-5">
-            {LINKS.map((link, index) => (
+            {LINKS.filter((link) => !link.hidden).map(({ hidden: _hidden, ...link }, index) => (
               <LinkObjectCard key={link.title} {...link} index={index} />
             ))}
           </div>
