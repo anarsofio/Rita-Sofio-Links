@@ -1,9 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { Globe, Instagram, Linkedin, Mail, Youtube } from "lucide-react";
+import { Instagram, Linkedin, Mail, Youtube } from "lucide-react";
 import type { ComponentType } from "react";
 import { cn } from "@/lib/utils";
 import { SpotifyIcon } from "./SpotifyIcon";
-import { PLACEHOLDERS, SITE_URL, isPlaceholder } from "./site-links";
+import { PLACEHOLDERS, isPlaceholder } from "./site-links";
 
 type Social = {
   key: string;
@@ -29,7 +29,8 @@ const SOCIALS: Social[] = [
 const EXTRA_SOCIALS: Social[] = [
   { key: "youtube", label: "YouTube", Icon: Youtube, href: PLACEHOLDERS.youtube },
   { key: "spotify", label: "Spotify", Icon: SpotifyIcon, href: PLACEHOLDERS.spotify },
-  { key: "website", label: "Website", Icon: Globe, href: SITE_URL },
+  // Hidden for now — uncomment to show the Website (globe) icon again.
+  // { key: "website", label: "Website", Icon: Globe, href: SITE_URL },
 ];
 
 export function SocialIcons({
@@ -41,7 +42,7 @@ export function SocialIcons({
   className?: string;
   size?: "sm" | "md" | "lg";
   bordered?: boolean;
-  /** Also show YouTube, Spotify, and Website icons. */
+  /** Also show YouTube and Spotify icons. */
   extra?: boolean;
 }) {
   const box = size === "sm" ? "h-9 w-9" : size === "lg" ? "h-14 w-14" : "h-11 w-11";

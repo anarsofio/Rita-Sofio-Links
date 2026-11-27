@@ -101,7 +101,6 @@ function LinkInBio() {
           <h1 className="mt-5 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             Rita Sofio
           </h1>
-          <p className="mt-1 text-sm font-medium text-muted-foreground">DigitalMindsStudio</p>
           <SocialIcons size="lg" className="mt-6" extra />
         </header>
 
