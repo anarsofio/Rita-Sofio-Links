@@ -50,7 +50,7 @@ const LINKS: {
   {
     title: "Tech in Heels",
     description: "Newsletter & podcast",
-    href: "#", // TODO: destination to be provided
+    href: "https://ritasofio.vercel.app/tech-in-heels",
     Icon: Rss,
     size: "wide",
   },
