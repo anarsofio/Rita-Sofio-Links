@@ -46,18 +46,18 @@ const LINKS: {
   opensContactDrawer?: boolean;
 }[] = [
   {
-    title: "Workshops & Classes",
-    description: "Hands-on, live, and interactive",
-    href: "https://ritasofio.vercel.app/workshops-2",
-    Icon: Sparkles,
-    featured: true,
-    size: "featured",
-  },
-  {
     title: "Tech in Heels",
     description: "Newsletter & podcast",
     href: "https://ritasofio.vercel.app/tech-in-heels",
     Icon: Rss,
+    featured: true,
+    size: "featured",
+  },
+  {
+    title: "Workshops & Classes",
+    description: "Hands-on, live, and interactive",
+    href: "https://ritasofio.vercel.app/workshops-2",
+    Icon: Sparkles,
     size: "wide",
   },
   {
