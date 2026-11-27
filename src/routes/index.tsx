@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import { Handshake, Heart, Mail, Rss, Sparkles } from "lucide-react";
+import { ContactDrawer } from "@/components/site/ContactDrawer";
 import { SocialIcons } from "@/components/site/SocialIcons";
 import { LinkObjectCard, type LinkObjectSize } from "@/components/site/LinkObjectCard";
 import profilePhoto from "@/assets/profile-photo.webp";
@@ -40,6 +42,8 @@ const LINKS: {
   size: LinkObjectSize;
   /** Set to true to hide a card without deleting it. */
   hidden?: boolean;
+  /** Opens the "Send a message" drawer instead of following a link. */
+  opensContactDrawer?: boolean;
 }[] = [
   {
     title: "Join AI Workshop",
@@ -74,13 +78,15 @@ const LINKS: {
   {
     title: "Contact Me",
     description: "Let's talk",
-    href: "#", // TODO: destination to be provided
+    opensContactDrawer: true,
     Icon: Mail,
     size: "square",
   },
 ];
 
 function LinkInBio() {
+  const [isContactOpen, setIsContactOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background">
       <div className="mx-auto w-full max-w-2xl px-5 pt-12 pb-14 sm:pt-16">
@@ -101,9 +107,16 @@ function LinkInBio() {
 
         <nav aria-label="Main links" className="mt-10">
           <div className="grid grid-cols-2 gap-4 [grid-auto-flow:dense] md:grid-cols-4 md:gap-5">
-            {LINKS.filter((link) => !link.hidden).map(({ hidden: _hidden, ...link }, index) => (
-              <LinkObjectCard key={link.title} {...link} index={index} />
-            ))}
+            {LINKS.filter((link) => !link.hidden).map(
+              ({ hidden: _hidden, opensContactDrawer, ...link }, index) => (
+                <LinkObjectCard
+                  key={link.title}
+                  {...link}
+                  onClick={opensContactDrawer ? () => setIsContactOpen(true) : undefined}
+                  index={index}
+                />
+              ),
+            )}
           </div>
         </nav>
 
@@ -113,6 +126,8 @@ function LinkInBio() {
           </p>
         </footer>
       </div>
+
+      <ContactDrawer open={isContactOpen} onOpenChange={setIsContactOpen} />
     </div>
   );
 }

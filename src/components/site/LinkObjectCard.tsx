@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 
 const MotionLink = motion.create(Link);
 const MotionAnchor = motion.a;
+const MotionButton = motion.button;
 
 export type LinkObjectSize = "featured" | "wide" | "square";
 
@@ -42,6 +43,7 @@ export function LinkObjectCard({
   hash,
   href,
   external,
+  onClick,
   Icon,
   featured = false,
   size,
@@ -53,6 +55,8 @@ export function LinkObjectCard({
   hash?: string;
   href?: string;
   external?: boolean;
+  /** When set, the card is a button that runs this instead of navigating (e.g. opens a drawer). */
+  onClick?: (() => void) | undefined;
   Icon: LucideIcon;
   featured?: boolean;
   size: LinkObjectSize;
@@ -154,6 +158,20 @@ export function LinkObjectCard({
       />
     </>
   );
+
+  if (onClick) {
+    return (
+      <MotionButton
+        type="button"
+        aria-haspopup="dialog"
+        onClick={onClick}
+        className={cn(classes, "text-left")}
+        {...motionProps}
+      >
+        {content}
+      </MotionButton>
+    );
+  }
 
   if (href) {
     return (
