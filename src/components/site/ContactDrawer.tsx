@@ -1,7 +1,6 @@
 import { X } from "lucide-react";
 import { AnimatePresence, motion, useDragControls, useReducedMotion } from "motion/react";
-import { useEffect, useId, useRef, useState } from "react";
-import { createPortal } from "react-dom";
+import { useEffect, useId, useRef } from "react";
 import { CtaButton } from "@/components/site/CtaButton";
 import { FormField } from "@/components/site/FormField";
 import { FormSuccessNotice } from "@/components/site/FormSuccessNotice";
@@ -27,10 +26,7 @@ export function ContactDrawer({
   const panelRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
   const dragControls = useDragControls();
-  const [mounted, setMounted] = useState(false);
   const { status, errorMessage, submit, reset } = useWeb3FormsForm();
-
-  useEffect(() => setMounted(true), []);
 
   function close() {
     onOpenChange(false);
@@ -77,9 +73,9 @@ export function ContactDrawer({
     };
   }, [open, onOpenChange]);
 
-  if (!mounted) return null;
-
-  return createPortal(
+  // Rendered in place (no portal): it is fixed-position and mounted at the
+  // page root, and importing react-dom here broke the production server build.
+  return (
     <AnimatePresence onExitComplete={reset}>
       {open ? (
         <div className="fixed inset-0 z-50 flex items-end justify-center">
@@ -185,7 +181,6 @@ export function ContactDrawer({
           </motion.div>
         </div>
       ) : null}
-    </AnimatePresence>,
-    document.body,
+    </AnimatePresence>
   );
 }
